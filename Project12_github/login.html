@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="login_character/css/character.css">
+    <link rel="icon" href="login_character/img/project8.png">
+    <title>ログイン</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">LOGIN</nav>
+    </header>
+
+    <!-- メッセージを表示する場所 -->
+    <div id="error"></div>
+    <div id="login"></div>
+    <div id="message"></div>
+    
+        <script>
+            if (location.search.includes('message=registered')) {
+           // location.searchはクエリパラメーターを取得するためのプロパティです（下記参照）。
+                document.getElementById('message').textContent = '新規登録が完了しました。ログインしてください。';
+            }
+            if (location.search.includes('error=exists')) {
+                document.getElementById('error').textContent = 'すでに登録されているユーザーIDです。ログインしてください。';
+            }
+            if (location.search.includes('login=failed')) {
+                document.getElementById('login').textContent = 'ログイン失敗しました。再度ログインしてください。';
+            }
+
+        </script>
+
+        <!-- ログインフォーム -->
+        <form name="form1" action="login_character/login_process.php" method="post">
+            <label for="login_id">ID:</label>
+            <input type="text" id="login_id" name="login_id" required>
+            
+            <label for="login_pw">PW:</label>
+            <input type="password" id="login_pw" name="login_pw" required>
+            
+            <input type="submit" value="LOGIN">
+        </form>
+    <br />
+    <a href="login_character/new_register.html">新規登録はこちら</a> 
+</body>
+
+</html>
